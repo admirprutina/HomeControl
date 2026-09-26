@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>d04d56e2-96a8-4970-ae81-71fb3de6d52f</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HomeControl.Application\HomeControl.Application.csproj" />
+    <ProjectReference Include="..\HomeControl.Infrastructure\HomeControl.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

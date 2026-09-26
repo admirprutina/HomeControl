@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/HomeControl.Api/HomeControl.Api.csproj" />
+    <Project Path="src/HomeControl.Application/HomeControl.Application.csproj" />
+    <Project Path="src/HomeControl.DeviceWorker/HomeControl.DeviceWorker.csproj" />
+    <Project Path="src/HomeControl.Domain/HomeControl.Domain.csproj" />
+    <Project Path="src/HomeControl.Infrastructure/HomeControl.Infrastructure.csproj" />
+  </Folder>
+</Solution>
