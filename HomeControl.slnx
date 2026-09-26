@@ -6,4 +6,7 @@
     <Project Path="src/HomeControl.Domain/HomeControl.Domain.csproj" />
     <Project Path="src/HomeControl.Infrastructure/HomeControl.Infrastructure.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/HomeControl.Tests/HomeControl.Tests.csproj" />
+  </Folder>
 </Solution>

@@ -3,6 +3,7 @@ using HomeControl.Application.Features.Devices.Commands.RegisterDevice;
 using HomeControl.Application.Features.Devices.Commands.TurnOffLight;
 using HomeControl.Application.Features.Devices.Commands.TurnOnLight;
 using HomeControl.Application.Features.Devices.Queries.GetDeviceById;
+using HomeControl.Application.Features.Devices.Queries.TestDeviceConnection;
 using HomeControl.Application.Messaging;
 using HomeControl.Domain.Devices;
 using Microsoft.AspNetCore.Mvc;
@@ -58,6 +59,18 @@ public sealed class DevicesController : ControllerBase
         var command = new TurnOnLightCommandRequest(id);
         var result = await _sender.Send(command, cancellationToken);
         var response = new TurnOnLightResponse(result.DeviceId, result.IsOn);
+
+        return Ok(response);
+    }
+
+    [HttpPost("{id:guid}/test-connection")]
+    public async Task<ActionResult<TestDeviceConnectionResponse>> TestConnectionAsync(
+        Guid id,
+        CancellationToken cancellationToken)
+    {
+        var query = new TestDeviceConnectionQueryRequest(id);
+        var result = await _sender.Send(query, cancellationToken);
+        var response = new TestDeviceConnectionResponse(result.DeviceId, result.Protocol, result.IsSuccessful);
 
         return Ok(response);
     }
