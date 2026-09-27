@@ -1,8 +1,10 @@
 using HomeControl.Application.Abstractions.Connections;
+using HomeControl.Application.Abstractions.Messaging;
 using HomeControl.Application.Abstractions.Persistence;
 using HomeControl.Domain.Devices;
 using HomeControl.Domain.Devices.Events;
 using HomeControl.Infrastructure.Connections;
+using HomeControl.Infrastructure.Messaging;
 using HomeControl.Infrastructure.Persistence;
 using HomeControl.Infrastructure.Persistence.Documents;
 using HomeControl.Infrastructure.Persistence.Projections;
@@ -43,6 +45,8 @@ public static class DependencyInjection
 
         services.AddScoped<IDeviceEventStore, MartenDeviceEventStore>();
         services.AddScoped<IDeviceRepository, MartenDeviceRepository>();
+        services.AddSingleton(RabbitMqSettings.FromConfiguration(configuration));
+        services.AddSingleton<IDeviceEventPublisher, RabbitMqDeviceEventPublisher>();
         services.AddSingleton<WifiConnectionStrategy>();
         services.AddSingleton<ZigbeeConnectionStrategy>();
         services.AddSingleton<BluetoothConnectionStrategy>();
