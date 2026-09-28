@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <PackageReference Include="Marten" Version="9.39.0" />
+    <PackageReference Include="Confluent.Kafka" Version="2.15.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.12" />
     <PackageReference Include="RabbitMQ.Client" Version="7.2.2" />
   </ItemGroup>

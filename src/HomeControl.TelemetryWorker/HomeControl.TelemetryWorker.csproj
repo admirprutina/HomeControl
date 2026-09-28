@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>HomeControl.TelemetryWorker-55a99d39-9cb2-42c4-8f40-bbcb413d7760</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Confluent.Kafka" Version="2.15.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.12" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HomeControl.Application\HomeControl.Application.csproj" />
+    <ProjectReference Include="..\HomeControl.Infrastructure\HomeControl.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>

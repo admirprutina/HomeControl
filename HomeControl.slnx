@@ -5,6 +5,7 @@
     <Project Path="src/HomeControl.DeviceWorker/HomeControl.DeviceWorker.csproj" />
     <Project Path="src/HomeControl.Domain/HomeControl.Domain.csproj" />
     <Project Path="src/HomeControl.Infrastructure/HomeControl.Infrastructure.csproj" />
+    <Project Path="src/HomeControl.TelemetryWorker/HomeControl.TelemetryWorker.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/HomeControl.Tests/HomeControl.Tests.csproj" />

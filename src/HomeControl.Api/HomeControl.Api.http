@@ -4,3 +4,15 @@ GET {{HomeControl.Api_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+@DeviceId = REPLACE_WITH_REGISTERED_DEVICE_ID
+
+POST {{HomeControl.Api_HostAddress}}/api/devices/{{DeviceId}}/telemetry
+Content-Type: application/json
+
+{
+  "temperatureCelsius": 22.6,
+  "powerUsageWatts": 8.3
+}
+
+###

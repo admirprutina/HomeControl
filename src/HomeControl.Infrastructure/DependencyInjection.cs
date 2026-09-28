@@ -5,6 +5,7 @@ using HomeControl.Domain.Devices;
 using HomeControl.Domain.Devices.Events;
 using HomeControl.Infrastructure.Connections;
 using HomeControl.Infrastructure.Messaging;
+using HomeControl.Infrastructure.Messaging.Kafka;
 using HomeControl.Infrastructure.Persistence;
 using HomeControl.Infrastructure.Persistence.Documents;
 using HomeControl.Infrastructure.Persistence.Projections;
@@ -47,6 +48,9 @@ public static class DependencyInjection
         services.AddScoped<IDeviceRepository, MartenDeviceRepository>();
         services.AddSingleton(RabbitMqSettings.FromConfiguration(configuration));
         services.AddSingleton<IDeviceEventPublisher, RabbitMqDeviceEventPublisher>();
+        services.AddSingleton(KafkaSettings.FromConfiguration(configuration));
+        services.AddSingleton<KafkaTopicInitializer>();
+        services.AddSingleton<IDeviceTelemetryPublisher, KafkaDeviceTelemetryPublisher>();
         services.AddSingleton<WifiConnectionStrategy>();
         services.AddSingleton<ZigbeeConnectionStrategy>();
         services.AddSingleton<BluetoothConnectionStrategy>();

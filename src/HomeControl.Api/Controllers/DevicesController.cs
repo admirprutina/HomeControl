@@ -1,4 +1,5 @@
 using HomeControl.Api.Contracts.Devices;
+using HomeControl.Application.Features.Devices.Commands.RecordDeviceTelemetry;
 using HomeControl.Application.Features.Devices.Commands.RegisterDevice;
 using HomeControl.Application.Features.Devices.Commands.TurnOffLight;
 using HomeControl.Application.Features.Devices.Commands.TurnOnLight;
@@ -49,6 +50,18 @@ public sealed class DevicesController : ControllerBase
         var response = new RegisterDeviceResponse(result.DeviceId, result.Name, result.Type.ToString());
 
         return StatusCode(StatusCodes.Status201Created, response);
+    }
+
+    [HttpPost("{id:guid}/telemetry")]
+    public async Task<ActionResult<RecordDeviceTelemetryResponse>> RecordTelemetryAsync(
+        Guid id,
+        [FromBody] RecordDeviceTelemetryRequest request,
+        CancellationToken cancellationToken)
+    {
+        var command = new RecordDeviceTelemetryCommandRequest(
+            id, request.TemperatureCelsius, request.PowerUsageWatts, request.OccurredAtUtc);
+        var result = await _sender.Send(command, cancellationToken);
+        return Accepted(new RecordDeviceTelemetryResponse(result.DeviceId, result.OccurredAtUtc));
     }
 
     [HttpPost("{id:guid}/turn-on")]
